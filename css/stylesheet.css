@@ -1,0 +1,28 @@
+html, body {
+    height: auto;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container-fluid {
+    min-height: 100vh;
+}
+
+.row {
+    display: flex;
+}
+
+nav.sidebar {
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+main {
+    padding: 1rem;
+}
+
+#content {
+    display: block;
+    height: auto;
+    overflow: visible;
+}

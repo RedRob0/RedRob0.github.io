@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embed Layout Fix</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        html, body {
+            height: auto;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container-fluid {
+            min-height: 100vh;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        nav.sidebar {
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        main {
+            padding: 1rem;
+        }
+
+        #content {
+            display: block;
+            height: auto;
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="sidebar-sticky p-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Content 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Content 2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Content 3</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-10">
+                <div id="content">
+                    <!-- Bluesky Embed -->
+                    <blockquote class="bluesky-embed"
+                                data-bluesky-uri="at://did:plc:77cuxvhaf65o4lwurhrhqybf/app.bsky.feed.post/3l35puultiq2d"
+                                data-bluesky-cid="bafyreietrahygoqwgxvixgta3qgherlsazdymducisqzux57baezjchcpi">
+                        <p lang="en">I want to be where the Brazilians are, take me to where the Brazilians are, the global south has treated me so kind</p>
+                        &mdash; Bosch Egg
+                        (<a href="https://bsky.app/profile/did:plc:77cuxvhaf65o4lwurhrhqybf?ref_src=embed">@boschegg.bsky.social</a>)
+                        <a href="https://bsky.app/profile/did:plc:77cuxvhaf65o4lwurhrhqybf/post/3l35puultiq2d?ref_src=embed">September 1, 2024</a>
+                    </blockquote>
+                    <script async src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
+
+                    <!-- Twitter Embed -->
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr">Anton Chigurh "hamburger or hotdog, call it"</p>
+                        &mdash; Bosch Egg (@BoschEgg)
+                        <a href="https://twitter.com/BoschEgg/status/1867312613652066762?ref_src=twsrc%5Etfw">December 12, 2024</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
