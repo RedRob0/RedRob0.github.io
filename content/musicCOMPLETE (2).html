@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expandable Cards with Slide-Out Info</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <style>
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      transition: all 0.4s ease;
+    }
+
+    .card-wrapper {
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .card-item {
+      width: 200px;
+      height: 200px;
+      background-color: white;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .card-info {
+      position: absolute;
+      top: 0;
+      left: 210px;
+      width: 300px;
+      height: 100%;
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .card-wrapper.expanded {
+      width: 100%;
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .card-wrapper.reveal .card-info {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="bg-light py-5">
+  <div class="container">
+    <div id="cardContainer" class="card-container">
+      <div class="card-wrapper" data-index="0">
+        <div class="card-item" onclick="expandCard(this)">
+          <h5>Card 1</h5>
+        </div>
+        <div class="card-info">
+          <p>Details for Card 1</p>
+        </div>
+      </div>
+
+      <div class="card-wrapper" data-index="1">
+        <div class="card-item" onclick="expandCard(this)">
+          <h5>Card 2</h5>
+        </div>
+        <div class="card-info">
+          <p>Details for Card 2</p>
+        </div>
+      </div>
+
+      <div class="card-wrapper" data-index="2">
+        <div class="card-item" onclick="expandCard(this)">
+          <h5>Card 3</h5>
+        </div>
+        <div class="card-info">
+          <p>Details for Card 3</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="otherCards" class="card-container mt-3" style="display: none;"></div>
+  </div>
+
+  <script>
+    const mainContainer = document.getElementById("cardContainer");
+const otherCardsContainer = document.getElementById("otherCards");
+
+// Store original order of card wrappers on page load
+const originalOrder = Array.from(mainContainer.children);
+
+function expandCard(card) {
+  const wrapper = card.closest(".card-wrapper");
+  const isExpanded = wrapper.classList.contains("expanded");
+
+  // Remove all expanded/reveal classes and clear containers
+  document.querySelectorAll(".card-wrapper").forEach(w => {
+    w.classList.remove("expanded", "reveal");
+  });
+  otherCardsContainer.style.display = "none";
+
+  if (isExpanded) {
+    // Restore original order when deselecting
+    originalOrder.forEach(w => {
+      mainContainer.appendChild(w);
+    });
+    return;
+  }
+
+  // Expand selected card
+  wrapper.classList.add("expanded");
+  mainContainer.insertBefore(wrapper, mainContainer.firstChild);
+
+  // Move other cards below
+  otherCardsContainer.innerHTML = "";
+  originalOrder.forEach(w => {
+    if (w !== wrapper) {
+      otherCardsContainer.appendChild(w);
+    }
+  });
+  otherCardsContainer.style.display = "flex";
+
+  // Show info panel after cards move
+  setTimeout(() => {
+    wrapper.classList.add("reveal");
+  }, 300);
+}
+
+  </script>
+</body>
+</html>
