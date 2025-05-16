@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const contentKey = link.id;
             const filePath = `content/${contentKey}.html`;
 
+            // Clear content before fetching new content
+            contentDiv.innerHTML = '';
+
             // Load content using fetch
             fetch(filePath)
                 .then(response => {
