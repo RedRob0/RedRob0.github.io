@@ -33,46 +33,50 @@
 </div>
 
 <script>
-const mainContainer = document.getElementById("cardContainer");
-const otherCardsContainer = document.getElementById("otherCards");
+  (function initCardInteractions() {
+    const mainContainer = document.getElementById("cardContainer");
+    const otherCardsContainer = document.getElementById("otherCards");
 
-// Store original order of card wrappers on page load
-const originalOrder = Array.from(mainContainer.children);
+    if (!mainContainer || !otherCardsContainer) return;
 
-function expandCard(card) {
-  const wrapper = card.closest(".card-wrapper");
-  const isExpanded = wrapper.classList.contains("expanded");
+    // Store original order of card wrappers on page load
+    const originalOrder = Array.from(mainContainer.children);
 
-  // Remove all expanded/reveal classes and clear containers
-  document.querySelectorAll(".card-wrapper").forEach(w => {
-    w.classList.remove("expanded", "reveal");
-  });
-  otherCardsContainer.style.display = "none";
+    window.expandCard = function(card) {
+      const wrapper = card.closest(".card-wrapper");
+      const isExpanded = wrapper.classList.contains("expanded");
 
-  if (isExpanded) {
-    // Restore original order when deselecting
-    originalOrder.forEach(w => {
-      mainContainer.appendChild(w);
-    });
-    return;
-  }
+      // Remove all expanded/reveal classes and clear containers
+      document.querySelectorAll(".card-wrapper").forEach(w => {
+        w.classList.remove("expanded", "reveal");
+      });
+      otherCardsContainer.style.display = "none";
 
-  // Expand selected card
-  wrapper.classList.add("expanded");
-  mainContainer.insertBefore(wrapper, mainContainer.firstChild);
+      if (isExpanded) {
+        // Restore original order when deselecting
+        originalOrder.forEach(w => {
+          mainContainer.appendChild(w);
+        });
+        return;
+      }
 
-  // Move other cards below
-  otherCardsContainer.innerHTML = "";
-  originalOrder.forEach(w => {
-    if (w !== wrapper) {
-      otherCardsContainer.appendChild(w);
-    }
-  });
-  otherCardsContainer.style.display = "flex";
+      // Expand selected card
+      wrapper.classList.add("expanded");
+      mainContainer.insertBefore(wrapper, mainContainer.firstChild);
 
-  // Show info panel after cards move
-  setTimeout(() => {
-    wrapper.classList.add("reveal");
-  }, 300);
-}
+      // Move other cards below
+      otherCardsContainer.innerHTML = "";
+      originalOrder.forEach(w => {
+        if (w !== wrapper) {
+          otherCardsContainer.appendChild(w);
+        }
+      });
+      otherCardsContainer.style.display = "flex";
+
+      // Show info panel after cards move
+      setTimeout(() => {
+        wrapper.classList.add("reveal");
+      }, 300);
+    };
+  })();
 </script>
