@@ -14,36 +14,39 @@
             position: relative;
             width: 100%;
             height: 300px;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
+            perspective: 1000px;
         }
 
         .flip-card-inner {
-            position: absolute;
             width: 100%;
             height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flipped .flip-card-inner {
+            transform: rotateY(180deg);
         }
 
         .flip-card-front,
         .flip-card-back {
-            backface-visibility: hidden;
             position: absolute;
             width: 100%;
             height: 100%;
+            backface-visibility: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.25rem;
-            pointer-events: auto;
+            overflow: hidden;
         }
 
         .flip-card-front {
             background-color: #f8f9fa;
-            color: #000;
             z-index: 2;
-            
         }
 
         .flip-card-back {
@@ -53,44 +56,46 @@
             z-index: 1;
         }
 
-        .flipped .flip-card {
-            transform: rotateY(180deg);
-        }
-
         .album-art {
-            width: 300px;
-            height: 300px;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
         }
-
     </style>
 </head>
 <body>
 
     <div class="container py-5">
         <div class="row g-4">
-            <!-- Fmbld EP 1 -->
+            <!-- Card 1 -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card-container" onclick="handleCardClick(event, this)">
                     <div class="flip-card">
-                        <div class="flip-card-inner flip-card-front">
-                            <img class="album-art" src=".\src\music\fmbled1.png"/>
-                        </div>
-                        <div class="flip-card-inner flip-card-back">
-                            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1874120342&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img class="album-art" src="src/music/fmbled1.png" />
+                            </div>
+                            <div class="flip-card-back">
+                                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+                                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1874120342&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Fmbld EP 2 -->
+            <!-- Card 2 -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card-container" onclick="handleCardClick(event, this)">
                     <div class="flip-card">
-                        <div class="flip-card-inner flip-card-front">
-                            <img class="album-art" src=".\src\music\fmbled2.png"/>
-                        </div>
-                        <div class="flip-card-inner flip-card-back">
-                            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2005433848&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img class="album-art" src="src/music/fmbled2.png" />
+                            </div>
+                            <div class="flip-card-back">
+                                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+                                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2005433848&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,11 +105,13 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card-container" onclick="handleCardClick(event, this)">
                     <div class="flip-card">
-                        <div class="flip-card-inner flip-card-front">
-                            Click to Flip (Front 3)
-                        </div>
-                        <div class="flip-card-inner flip-card-back">
-                            Back Content 3
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                Click to Flip (Front 3)
+                            </div>
+                            <div class="flip-card-back">
+                                Back Content 3
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,22 +121,15 @@
 
     <script>
         function handleCardClick(event, container) {
-            const clickedElement = event.target;
-
-            // Check if the click occurred within the front face
             const frontFace = container.querySelector('.flip-card-front');
-            if (!frontFace.contains(event.target)) {
-                return; // Exit if the clicked element is not inside the front
-            }
+            if (!frontFace.contains(event.target)) return;
 
-            // Flip back all cards
+            // Close all other cards
             document.querySelectorAll('.card-container').forEach(card => {
-                if (card !== container) {
-                    card.classList.remove('flipped');
-                }
+                if (card !== container) card.classList.remove('flipped');
             });
 
-            // Toggle the clicked card
+            // Toggle this card
             container.classList.toggle('flipped');
         }
     </script>
