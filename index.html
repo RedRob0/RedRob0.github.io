@@ -10,32 +10,27 @@
     <script defer src="js/navigation.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Vertical Navbar -->
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <!-- <li class="nav-item">
-        <a class="nav-link active" href="#" id="games">Content 1</a>
-    </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="music">Music</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="links">Socials</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <div class="d-flex" style="min-height: 100vh;">
+        <!-- Vertical Navbar -->
+        <nav class="bg-light sidebar p-3" style="width: 200px; min-width: 150px;">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="music">Music</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="links">Socials</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-            <!-- Main Content Area -->
-            <main class="col-md-10">
-                <div id="content">
-                    Default Content
-                </div>
-            </main>
-        </div>
+        <!-- Main Content Area -->
+        <main class="flex-grow-1 p-3">
+            <div id="content">
+                Default Content
+            </div>
+        </main>
     </div>
 
     <!-- Bootstrap JS, Popper.js, and jQuery -->
