@@ -158,11 +158,11 @@
 
             // Close all other cards when a new one is clicked
             document.querySelectorAll('.card-container').forEach(card => {
-                if (card !== container) card.classList.remove('flipped');
+                if (card !== container) card.querySelector('.flip-card')?.classList.remove('flipped');
             });
 
             // Toggle the clicked card
-            container.classList.toggle('flipped');
+            container.querySelector('.flip-card').classList.toggle('flipped');
         }
     </script>
 
