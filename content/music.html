@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Responsive Flipping Cards</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .card-container {
             perspective: 1000px;
@@ -28,10 +28,9 @@
             transform: translateZ(0);
         }
 
-        /* Remove this rotation, since we do fade now */
-        /* .flipped .flip-card-inner {
+        .flipped .flip-card-inner {
             transform: rotateY(180deg);
-        } */
+        }
 
         .flip-card-front,
         .flip-card-back {
@@ -48,35 +47,21 @@
             justify-content: center;
             font-size: 1.25rem;
             overflow: hidden;
-            /* Add fade transition and pointer-events control */
-            opacity: 1;
-            pointer-events: auto;
-            transition: opacity 0.5s ease;
         }
 
         .flip-card-front {
             background-color: #f8f9fa;
             z-index: 2;
-            display: flex; /* always flex */
+            display: flex;
         }
 
         .flip-card-back {
             background-color: #0d6efd;
             color: white;
-            transform: rotateY(180deg); /* keep this for consistent style */
+            transform: rotateY(180deg);
             z-index: 1;
-            display: flex; /* always flex */
-            opacity: 0; /* start hidden */
-            pointer-events: none;
+            display: none;
         }
-
-        /* Remove instant display toggling in CSS */
-        /* .flipped .flip-card-front {
-            display: none !important;
-        }
-        .flipped .flip-card-back {
-            display: flex !important;
-        } */
 
         .album-art {
             max-width: 100%;
@@ -96,7 +81,7 @@
         }
 
         .container {
-            margin-top: -150px;
+            margin-top: -100px;
             position: relative;
             z-index: 1;
             padding-top: 200px;
@@ -104,7 +89,7 @@
     </style>
 </head>
 <body>
-    <img class="image-header" src="src/music/bugchaser-banner.png" alt="Header Image" />
+    <img class="image-header" src="src/music/bugchaser-banner.png" alt="Header Image">
 
     <div class="container py-5">
         <div class="row g-4">
@@ -117,11 +102,7 @@
                                 <img class="album-art" src="src/music/fmbled1.png" />
                             </div>
                             <div class="flip-card-back">
-                                <iframe width="100%"
-                                        height="300"
-                                        scrolling="no"
-                                        frameborder="no"
-                                        allow="autoplay"
+                                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
                                         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1874120342&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
                             </div>
                         </div>
@@ -138,5 +119,46 @@
                                 <img class="album-art" src="src/music/fmbled2.png" />
                             </div>
                             <div class="flip-card-back">
-                                <iframe width="100%"
-                                        height="300"
+                                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+                                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2005433848&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card-container" onclick="handleCardClick(event, this)">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                Click to Flip (Front 3)
+                            </div>
+                            <div class="flip-card-back">
+                                Back Content 3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleCardClick(event, container) {
+            const frontFace = container.querySelector('.flip-card-front');
+            if (!frontFace.contains(event.target)) return;
+
+            // Close all other cards
+            document.querySelectorAll('.flip-card-inner').forEach(inner => {
+                inner.parentElement.parentElement.classList.remove('flipped');
+            });
+
+            // Toggle this card
+            container.classList.toggle('flipped');
+        }
+    </script>
+
+</body>
+</html>
