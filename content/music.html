@@ -49,29 +49,10 @@
             overflow: hidden;
         }
 
-        .flipped .flip-card-front {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .flipped .flip-card-back {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .flip-card-front {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .flip-card-back {
-            opacity: 0;
-            pointer-events: none;
-        }
-
         .flip-card-front {
             background-color: #f8f9fa;
             z-index: 2;
+            display: flex;
         }
 
         .flip-card-back {
@@ -79,6 +60,15 @@
             color: white;
             transform: rotateY(180deg);
             z-index: 1;
+            display: none;
+        }
+
+        .flipped .flip-card-front {
+            display: none !important; /* hide front */
+        }
+
+        .flipped .flip-card-back {
+            display: flex !important; /* show back */
         }
 
         .album-art {
