@@ -5,7 +5,7 @@
     <title>Flipping Cards with Iframe - Bootstrap 4</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap 4 CDN -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <style>
@@ -25,7 +25,7 @@
         .flip-card::before {
             content: "";
             display: block;
-            padding-top: 100%; /* Forces square aspect ratio */
+            padding-top: 100%;
         }
 
         .flipped {
@@ -79,69 +79,99 @@
         .shadow-sm {
             box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
         }
+
+        .card-group {
+            position: relative;
+        }
+
+        .header-image {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+            .header-image img {
+                width: 50%;
+                height: auto;
+                display: block;
+            }
+
+        .card-group-section .container {
+            position: relative;
+            margin-top: -10%;
+            z-index: 2;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container py-5">
-        <div class="row">
+    <div class="card-group-section position-relative my-5">
+        <!-- Background Header Image -->
+        <div class="header-image">
+            <img src="src/music/bugchaser-banner.png" alt="Fumbled A BBW Series Header">
+        </div>
 
-            <!-- Fmbld EP 1 -->
-            <div class="col-md-4">
-                <div class="card-container shadow-sm" onclick="flipCard(this)">
-                    <div class="flip-card">
-                        <div class="flip-card-front">
-                            <img src="src/music/fmbld1.png" alt="The Fumbled a BBW EP PROD. OXXY">
-                        </div>
-                        <div class="flip-card-back">
-                            <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1874120342&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+        <div class="container py-5">
+            <div class="row">
+
+                <!-- Fmbld EP 1 -->
+                <div class="col-md-4">
+                    <div class="card-container shadow-sm" onclick="flipCard(this)">
+                        <div class="flip-card">
+                            <div class="flip-card-front">
+                                <img src="src/music/fmbld1.png" alt="The Fumbled a BBW EP PROD. OXXY">
+                            </div>
+                            <div class="flip-card-back">
+                                <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1874120342&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Fmbld EP 2 -->
-            <div class="col-md-4">
-                <div class="card-container shadow-sm" onclick="flipCard(this)">
-                    <div class="flip-card">
-                        <div class="flip-card-front">
-                            <img src="src/music/fmbld2.png" alt="Fumbled a BBW EP 2: Songs for Lovers & Shooters Alike">
-                        </div>
-                        <div class="flip-card-back">
-                            <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2005433848&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                <!-- Fmbld EP 2 -->
+                <div class="col-md-4">
+                    <div class="card-container shadow-sm" onclick="flipCard(this)">
+                        <div class="flip-card">
+                            <div class="flip-card-front">
+                                <img src="src/music/fmbld2.png" alt="Fumbled a BBW EP 2: Songs for Lovers & Shooters Alike">
+                            </div>
+                            <div class="flip-card-back">
+                                <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2005433848&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Fmbld Track a Week -->
-            <div class="col-md-4">
-                <div class="card-container shadow-sm" onclick="flipCard(this)">
-                    <div class="flip-card">
-                        <div class="flip-card-front">
-                            <img src="src/music/fmbld3.png" alt="Track a Week 2025">
-                        </div>
-                        <div class="flip-card-back">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=3EvUkfpP9mDAtJF5&amp;list=PLV3HwjMvRGG4__fw_uwhVABGGVvmTwUNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <!-- Fmbld Track a Week -->
+                <div class="col-md-4">
+                    <div class="card-container shadow-sm" onclick="flipCard(this)">
+                        <div class="flip-card">
+                            <div class="flip-card-front">
+                                <img src="src/music/fmbld3.png" alt="Track a Week 2025">
+                            </div>
+                            <div class="flip-card-back">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=3EvUkfpP9mDAtJF5&amp;list=PLV3HwjMvRGG4__fw_uwhVABGGVvmTwUNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 
-    <script>
-        function flipCard(clickedContainer) {
-            // Reset all cards
-            document.querySelectorAll('.flip-card').forEach(card => {
-                card.classList.remove('flipped');
-            });
+        <script>
+            function flipCard(clickedContainer) {
+                // Reset all cards
+                document.querySelectorAll('.flip-card').forEach(card => {
+                    card.classList.remove('flipped');
+                });
 
-            // Flip the clicked card
-            const flip = clickedContainer.querySelector('.flip-card');
-            flip.classList.add('flipped');
-        }
-    </script>
+                // Flip the clicked card
+                const flip = clickedContainer.querySelector('.flip-card');
+                flip.classList.add('flipped');
+            }
+        </script>
 </body>
 </html>
