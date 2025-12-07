@@ -76,6 +76,10 @@
             border: none;
         }
 
+        iframe.thin-slice {
+            height: 120px;
+        }
+
         .shadow-sm {
             box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
         }
@@ -91,21 +95,26 @@
             justify-content: center;
         }
 
-            .header-image img {
-                width: 50%;
-                height: auto;
-                display: block;
-            }
+        .header-image img {
+            width: 50%;
+            height: auto;
+            display: block;
+        }
 
         .card-group-section .container {
             position: relative;
             margin-top: -10%;
             z-index: 2;
         }
+
+        p.feature-text {
+            font-size: 70%;
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
     </style>
 </head>
 <body>
-
     <div class="card-group-section position-relative my-5">
         <!-- Background Header Image -->
         <div class="header-image">
@@ -113,10 +122,10 @@
         </div>
 
         <div class="container py-5">
+            <!-- top row -->
             <div class="row">
-
                 <!-- Fmbld EP 1 -->
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card-container shadow-sm" onclick="flipCard(this)">
                         <div class="flip-card">
                             <div class="flip-card-front">
@@ -130,33 +139,55 @@
                 </div>
 
                 <!-- Fmbld EP 2 -->
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card-container shadow-sm" onclick="flipCard(this)">
                         <div class="flip-card">
                             <div class="flip-card-front">
                                 <img src="src/music/fmbld2.png" alt="Fumbled a BBW EP 2: Songs for Lovers & Shooters Alike">
                             </div>
                             <div class="flip-card-back">
-                                <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2005433848&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=YYO5UL1XHYU6k9nb&amp;list=PLV3HwjMvRGG4__fw_uwhVABGGVvmTwUNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Fmbld Track a Week -->
-                <div class="col-md-4">
+            </div>
+            <!-- bottom row -->
+            <div class="row">
+                <!-- Fmbld Track a Week Summer 25-->
+                <div class="col-md-6">
                     <div class="card-container shadow-sm" onclick="flipCard(this)">
                         <div class="flip-card">
                             <div class="flip-card-front">
-                                <img src="src/music/fmbld3.png" alt="Track a Week 2025">
+                                <img src="src/music/fmbldTrackAWeek.png" alt="Track a Week 2025">
                             </div>
                             <div class="flip-card-back">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=3EvUkfpP9mDAtJF5&amp;list=PLV3HwjMvRGG4__fw_uwhVABGGVvmTwUNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=ZoZyPl8kDRYX21z6&amp;list=PLV3HwjMvRGG7g_wPlNz2OQ8DAJzSDokXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Fumbled Features -->
+                <div class="col-md-6">
+                    <div class="card-container shadow-sm" onclick="flipCard(this)">
+                        <div class="flip-card">
+                            <div class="flip-card-front">
+                                <img src="src/music/fmbldFeatures.png" alt="Track a Week 2025">
+                            </div>
+                            <div class="flip-card-back">
+                                <p class='feature-text'>Fumbled a BBW as DJ BATTERYMAN with lyrics and vocals on DJ ARCHFIEND's THE BACKROW EP</p>
+                                <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1840132612/size=large/bgcol=333333/linkcol=e32c14/tracklist=false/artwork=small/track=3972504994/transparent=true/" seamless><a href="https://djarchfiend.bandcamp.com/album/the-backrow-ep">THE BACKROW EP by DJ ARCHFIEND</a></iframe>
+                                <p class='feature-text'>Fumbled a BBW as Bosch Eggman with additional vocals on DJ ARCHFIEND's DREAD JESTER (SKYLIVE 2025)</p>
+                                <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=822325780/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/artwork=small/track=227534481/transparent=true/" seamless><a href="https://djarchfiend.bandcamp.com/album/dread-jester-skylive-2025">DREAD JESTER (SKYLIVE 2025) by DJ ARCHFIEND</a></iframe>
+                                <p class='feature-text'>Fumbled a BBW lyrics & vocals on Haiipara's Dump EP</p>
+                                <iframe class="thin-slice" width="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2077989148&color=%23ec4494&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/haiipara" title="haiipara" target="_blank" style="color: #cccccc; text-decoration: none;">haiipara</a> · <a href="https://soundcloud.com/haiipara/throw-dat-flick-dat-feat-fumbled-a-bbw-3" title="throw dat flick dat (feat. Fumbled A BBW)" target="_blank" style="color: #cccccc; text-decoration: none;">throw dat flick dat (feat. Fumbled A BBW)</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bandcamp Link Bar -->
+                <button onclick="document.location='https://fumbledabbw.bandcamp.com/'">Support Fumbled</button>
             </div>
         </div>
     </div>
