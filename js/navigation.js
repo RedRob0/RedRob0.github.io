@@ -1,6 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('.nav-link');
     const contentDiv = document.getElementById('content');
+    const sidebar = document.getElementById("sidebar");
+    const tab = document.getElementById("sidebarTab");
+    const closeLinks = document.querySelectorAll("[data-close]");
+
+    // Sidebar related functions
+    function openSidebar() {
+        sidebar.classList.remove("hidden");
+        tab.style.left = "200px";
+    }
+    function closeSidebar() {
+        sidebar.classList.add("hidden");
+        tab.style.left = "20px";
+    }
+    // Toggle Sidebar via tab
+    tab.addEventListener("click", () => {
+        if (sidebar.classList.contains("hidden")) {
+            openSidebar();
+        } else {
+            closeSidebar();
+        }
+    });
 
     links.forEach(link => {
         link.addEventListener('click', (event) => {
@@ -42,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(error => {
                     contentDiv.innerHTML = `<div class="alert alert-danger">Error loading content: ${error.message}</div>`;
                 });
+
+            // Close Sidebar after content fetch
+            closeSidebar();
         });
     });
 });

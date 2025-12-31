@@ -94,37 +94,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        const sidebar = document.getElementById("sidebar");
-        const tab = document.getElementById("sidebarTab");
-        const closeLinks = document.querySelectorAll("[data-close]");
-
-        function openSidebar() {
-            sidebar.classList.remove("hidden");
-            tab.style.left = "200px";
-        }
-
-        function closeSidebar() {
-            sidebar.classList.add("hidden");
-            tab.style.left = "20px";
-        }
-
-        // Hide Sidebar when a nav-item is clicked
-        closeLinks.forEach(link => {
-            link.addEventListener("click", (e) => {
-                closeSidebar();
-            });
-        });
-
-        // Toggle Sidebar via tab
-        tab.addEventListener("click", () => {
-            if (sidebar.classList.contains("hidden")) {
-                openSidebar();
-            } else {
-                closeSidebar();
-            }
-        });
-    </script>
-
 </body>
 </html>
