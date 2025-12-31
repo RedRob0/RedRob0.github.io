@@ -8,31 +8,83 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script defer src="js/navigation.js"></script>
+    <style>
+        /* Sidebar overlay */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100vh;
+            z-index: 1000;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+            padding-top: 3rem; /* enough room for the tab */
+        }
+
+        /* Hidden state */
+        .sidebar.hidden {
+            transform: translateX(-180px);
+
+        }
+
+        /* Main content stays full width */
+        main {
+            margin-left: 0;
+        }
+
+        /* Vertical-Navbar tab (the little handle dingle) */
+        .sidebar-tab {
+            position: fixed;
+            top: 0;
+            left: 200px; /* matches sidebar width */
+
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            background: #f8f9fa;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 0 0 6px 0;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            z-index: 1100;
+            transition: left 0.3s ease;
+        }
+
+        .sidebar.hidden + .sidebar-tab,
+        .sidebar-tab.hidden {
+            left: 20px; /* stays visible */
+        }
+
+    </style>
 </head>
 <body>
     <div class="d-flex" style="min-height: 100vh;">
-        <!-- Vertical Navbar -->
-        <nav class="bg-light sidebar p-3" style="width: 200px; min-width: 150px;">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="landing">Home</a> <!-- make this like a centered icon at the top -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="music">Music</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="video">Video</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="links">Socials</a>
-                    </li>
-                </ul>
-            </div>
+        <!-- Vertical Navbar / sidebar -->
+        <div class="sidebar-tab" id="sidebarTab">☰</div>
+        <nav id="sidebar" class="sidebar bg-light p-3">
+
+
+            <ul class="nav flex-column mt-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-close>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-close>Music</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-close>Video</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-close>Socials</a>
+                </li>
+            </ul>
         </nav>
 
         <!-- Main Content Area -->
-        <main class="flex-grow-1 p-3">
+        <main class=" p-3">
             <div id="content">
                 <h3>Placeholder Landing page</h3> <br /> this website is an informal compilation of projects
             </div>
@@ -43,5 +95,35 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const tab = document.getElementById("sidebarTab");
+        const closeLinks = document.querySelectorAll("[data-close]");
+
+        function openSidebar() {
+            sidebar.classList.remove("hidden");
+            tab.style.left = "200px";
+        }
+
+        function closeSidebar() {
+            sidebar.classList.add("hidden");
+            tab.style.left = "20px";
+        }
+
+        // Hide Sidebar when a nav-item is clicked
+        closeLinks.forEach(link => {
+            link.addEventListener("click", closeSidebar);
+        });
+
+        // Toggle Sidebar via tab
+        tab.addEventListener("click", () => {
+            if (sidebar.classList.contains("hidden")) {
+                openSidebar();
+            } else {
+                closeSidebar();
+            }
+        });
+    </script>
+
 </body>
 </html>
