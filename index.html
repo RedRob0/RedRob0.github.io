@@ -52,7 +52,6 @@
             z-index: 1100;
             transition: left 0.3s ease;
             pointer-events: auto;
-            width: fit-content;
         }
 
         .sidebar.hidden + .sidebar-tab,
@@ -112,7 +111,9 @@
 
         // Hide Sidebar when a nav-item is clicked
         closeLinks.forEach(link => {
-            link.addEventListener("click", closeSidebar);
+            link.addEventListener("click", (e) => {
+                closeSidebar();
+            });
         });
 
         // Toggle Sidebar via tab
