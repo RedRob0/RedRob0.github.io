@@ -21,6 +21,7 @@
             transition: transform 0.3s ease;
             box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
             padding-top: 3rem; /* enough room for the tab */
+            pointer-events: auto;
         }
 
         /* Hidden state */
@@ -39,7 +40,6 @@
             position: fixed;
             top: 0;
             left: 200px; /* matches sidebar width */
-
             display: inline-flex;
             align-items: center;
             padding: 0.5rem 0.75rem;
@@ -51,6 +51,8 @@
             white-space: nowrap;
             z-index: 1100;
             transition: left 0.3s ease;
+            pointer-events: auto;
+            width: fit-content;
         }
 
         .sidebar.hidden + .sidebar-tab,
@@ -65,20 +67,18 @@
         <!-- Vertical Navbar / sidebar -->
         <div class="sidebar-tab" id="sidebarTab">☰</div>
         <nav id="sidebar" class="sidebar bg-light p-3">
-
-
-            <ul class="nav flex-column mt-4">
+            <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-close>Home</a>
+                    <a class="nav-link" href="#" id="landing">Home</a> <!-- make this like a centered icon at the top -->
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-close>Music</a>
+                    <a class="nav-link" href="#" id="music">Music</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-close>Video</a>
+                    <a class="nav-link" href="#" id="video">Video</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-close>Socials</a>
+                    <a class="nav-link" href="#" id="links">Socials</a>
                 </li>
             </ul>
         </nav>
