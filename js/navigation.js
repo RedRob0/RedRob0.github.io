@@ -48,16 +48,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     contentDiv.innerHTML = html;
 
                     // Re-execute script tags
-                    const scripts = contentDiv.querySelectorAll('script');
-                    scripts.forEach(oldScript => {
-                        const newScript = document.createElement('script');
-                        if (oldScript.src) {
-                            newScript.src = oldScript.src;
-                            newScript.async = oldScript.async;
-                        } else {
-                            newScript.textContent = oldScript.textContent;
-                        }
-                        oldScript.replaceWith(newScript);
+                    requestAnimationFrame(() => {
+                        const scripts = contentDiv.querySelectorAll('script');
+
+                        scripts.forEach(oldScript => {
+                            const newScript = document.createElement('script');
+
+                            if (oldScript.src) {
+                                newScript.src = oldScript.src;
+                                newScript.async = oldScript.async;
+                            } else {
+                                newScript.textContent = oldScript.textContent;
+                            }
+
+                            oldScript.replaceWith(newScript);
+                        });
                     });
                 })
                 .catch(error => {
