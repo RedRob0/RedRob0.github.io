@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>The TV</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    .show-block {
+        cursor: pointer;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: background 0.2s;
+    }
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .show-block {
-            cursor: pointer;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            transition: background 0.2s;
-        }
-        
         .show-block:hover {
             background-color: #f0f0f0;
         }
@@ -27,11 +18,11 @@
             font-weight: bold;
         }
 
-        #tvWrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
+    #tvWrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
 
         #tvWrapper iframe {
             position: absolute;
@@ -42,69 +33,64 @@
             left: 8%;
         }
 
-        #tvOverlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            object-fit: fill;
-            image-rendering: pixelated;
-        }
-
-    </style>
-</head>
-<body>
-    <h3>this page is placeholder for video projects</h3>
-    <!-- VIDEO PLAYER -->
-    <div class="d-flex justify-content-center mb-4">
-        <div id="playerContainer" style="width: 960px; max-width: 95vw; aspect-ratio: 4 / 3;">
-            <div id="tvWrapper">
-                <!-- Video Content Area -->
-                <img id="tvOverlay" src="src/video/tvWrapper.png" alt="The TV" />
-            </div>
+    #tvOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        object-fit: fill;
+        image-rendering: pixelated;
+    }
+</style>
+<h3>this page is placeholder for video projects</h3>
+<!-- VIDEO PLAYER -->
+<div class="d-flex justify-content-center mb-4">
+    <div id="playerContainer" style="width: 960px; max-width: 95vw; aspect-ratio: 4 / 3;">
+        <div id="tvWrapper">
+            <!-- Video Content Area -->
+            <img id="tvOverlay" src="src/video/tvWrapper.png" alt="The TV" />
         </div>
     </div>
+</div>
 
-    <!-- TV GUIDE GRID --> <!-- placeholder, later I want a clickable image of a TV guide -->
-    <div class="container">
-        <div class="row g-3">
-            <div class="col-4">
-                <div class="show-block" show-id="HTB1">Hoc Tempore Bruh S1</div>
-            </div>
-            <div class="col-4">
-                <div class="show-block" show-id="fmbldSummer25">Music Videos</div>
-            </div>
-            <div class="col-4">
-                <div class="show-block" show-id="news">News</div>
-            </div>
+<!-- TV GUIDE GRID --> <!-- placeholder, later I want a clickable image of a TV guide -->
+<div class="container">
+    <div class="row g-3">
+        <div class="col-4">
+            <div class="show-block" show-id="HTB1">Hoc Tempore Bruh S1</div>
+        </div>
+        <div class="col-4">
+            <div class="show-block" show-id="fmbldSummer25">Music Videos</div>
+        </div>
+        <div class="col-4">
+            <div class="show-block" show-id="news">News</div>
         </div>
     </div>
+</div>
 
-    <script>
-        // Store iframe HTML for each show
-        const showIframes = {
-            HTB1: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ctRnW_1CZBouQYjB&amp;list=PLV3HwjMvRGG7g_wPlNz2OQ8DAJzSDokXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-            fmbldSummer25: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ZE_qTyJ93l-F6YwN&amp;list=PLV3HwjMvRGG4__fw_uwhVABGGVvmTwUNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-            news: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/1CaVnrytI2Y?si=mRry9dvbfNd614VF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
-        };
+<script>
+    // Store iframe HTML for each show
+    const showIframes = {
+        HTB1: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ctRnW_1CZBouQYjB&amp;list=PLV3HwjMvRGG7g_wPlNz2OQ8DAJzSDokXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        fmbldSummer25: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ZE_qTyJ93l-F6YwN&amp;list=PLV3HwjMvRGG4__fw_uwhVABGGVvmTwUNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        news: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/1CaVnrytI2Y?si=mRry9dvbfNd614VF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+    };
 
-        const blocks = document.querySelectorAll(".show-block");
+    const blocks = document.querySelectorAll(".show-block");
 
-        blocks.forEach(block => {
-            block.addEventListener("click", function () {
-                const showId = this.getAttribute("show-id");
-                if (showIframes[showId]) {
-                    // Replace player
-                    document.getElementById("tvWrapper").innerHTML = showIframes[showId] + '<img id="tvOverlay" src="src/video/tvWrapper.png" alt="The TV" />';
+    blocks.forEach(block => {
+        block.addEventListener("click", function () {
+            const showId = this.getAttribute("show-id");
+            if (showIframes[showId]) {
+                // Replace player
+                document.getElementById("tvWrapper").innerHTML = showIframes[showId] + '<img id="tvOverlay" src="src/video/tvWrapper.png" alt="The TV" />';
 
-                    // Highlight active show
-                    blocks.forEach(b => b.classList.remove("active"));
-                    this.classList.add("active");
-                }
-            });
+                // Highlight active show
+                blocks.forEach(b => b.classList.remove("active"));
+                this.classList.add("active");
+            }
         });
-    </script>
-</body>
-</html>
+    });
+</script>
