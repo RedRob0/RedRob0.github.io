@@ -71,26 +71,26 @@
 </div>
 
 <script>
-    // Store iframe HTML for each show
-    const showIframes = {
-        HTB1: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ctRnW_1CZBouQYjB&amp;list=PLV3HwjMvRGG7g_wPlNz2OQ8DAJzSDokXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-        fmbldSummer25: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ZE_qTyJ93l-F6YwN&amp;list=PLV3HwjMvRGG4__fw_uwhVABGGVvmTwUNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-        news: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/1CaVnrytI2Y?si=mRry9dvbfNd614VF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
-    };
+    (() => {
+        // Store iframe HTML for each show
+        const showIframes = {
+            HTB1: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ctRnW_1CZBouQYjB&amp;list=PLV3HwjMvRGG7g_wPlNz2OQ8DAJzSDokXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+            fmbldSummer25: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ZE_qTyJ93l-F6YwN&amp;list=PLV3HwjMvRGG4__fw_uwhVABGGVvmTwUNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+            news: `<iframe class="mx-auto d-block" width="100%" height="100%" src="https://www.youtube.com/embed/1CaVnrytI2Y?si=mRry9dvbfNd614VF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+        };
 
-    const blocks = document.querySelectorAll(".show-block");
+        const blocks = document.querySelectorAll(".show-block");
 
-    blocks.forEach(block => {
-        block.addEventListener("click", function () {
-            const showId = this.getAttribute("show-id");
-            if (showIframes[showId]) {
-                // Replace player
+        blocks.forEach(block => {
+            block.addEventListener("click", function () {
+                const showId = this.getAttribute("show-id");
+                if (!showIframes[showId]) return;
+
                 document.getElementById("tvWrapper").innerHTML = showIframes[showId] + '<img id="tvOverlay" src="src/video/tvWrapper.png" alt="The TV" />';
 
-                // Highlight active show
                 blocks.forEach(b => b.classList.remove("active"));
                 this.classList.add("active");
-            }
+            });
         });
-    });
+    })();
 </script>
