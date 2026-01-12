@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 newScript.textContent = oldScript.textContent;
                             }
 
-                            oldScript.replaceWith(newScript);
+                            document.body.appendChild(newScript);
+                            oldScript.remove();
                         });
                     });
                 })
