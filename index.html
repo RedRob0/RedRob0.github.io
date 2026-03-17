@@ -9,6 +9,23 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script defer src="js/navigation.js"></script>
     <style>
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Scrolling tiles background */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            image-rendering: pixelated;
+        }
+
         /* Sidebar overlay */
         .sidebar {
             position: fixed;
@@ -24,11 +41,10 @@
             pointer-events: auto;
         }
 
-        /* Hidden state */
-        .sidebar.hidden {
-            transform: translateX(-180px);
-
-        }
+            /* Hidden state */
+            .sidebar.hidden {
+                transform: translateX(-180px);
+            }
 
         /* Main content stays full width */
         main {
@@ -54,14 +70,16 @@
             pointer-events: auto;
         }
 
-        .sidebar.hidden + .sidebar-tab,
-        .sidebar-tab.hidden {
-            left: 20px; /* stays visible */
-        }
-
+            .sidebar.hidden + .sidebar-tab,
+            .sidebar-tab.hidden {
+                left: 20px; /* stays visible */
+            }
     </style>
 </head>
 <body>
+    <!-- Scrolling Background -->
+    <canvas id="bgCanvas"></canvas>
+
     <div class="d-flex" style="min-height: 100vh;">
         <!-- Vertical Navbar / sidebar -->
         <div class="sidebar-tab" id="sidebarTab">☰</div>
@@ -94,5 +112,59 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Background Tiling + Scrolling -->
+    <script>
+        const canvas = document.getElementById("bgCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Tile size
+        const tileWidth = 426;
+        const tileHeight = 540;
+
+        // Scroll speed (pixels per frame)
+        const speedX = 1;  // leftwards
+        const speedY = 1;  // downwards
+
+        let offsetX = 0;
+        let offsetY = 0;
+
+        // Resize canvas to fill viewport
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Load tile image
+        const tile = new Image();
+        tile.src = "src/img/cry.png";
+
+        // Draw tiles
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Calculate starting positions for tiling
+            const startX = -tileWidth + (offsetX % tileWidth);
+            const startY = -tileHeight + (offsetY % tileHeight);
+
+            // Draw the repeated tiles
+            for (let x = startX; x < canvas.width; x += tileWidth) {
+                for (let y = startY; y < canvas.height; y += tileHeight) {
+                    ctx.drawImage(tile, x, y, tileWidth, tileHeight);
+                }
+            }
+
+            // Update offsets
+            offsetX -= speedX;
+            offsetY += speedY;
+
+            requestAnimationFrame(draw);
+        }
+
+        // Start drawing after image loads
+        tile.onload = draw;
+    </script>
 </body>
 </html>
