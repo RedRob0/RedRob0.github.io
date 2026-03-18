@@ -118,19 +118,24 @@
     <script>
         const canvas = document.getElementById("bgCanvas");
         const ctx = canvas.getContext("2d");
+        ctx.imageSmoothingEnabled = false;
 
-        // Tile size
         const tileWidth = 426;
         const tileHeight = 540;
 
-        // Scroll speed (pixels per frame)
-        const speedX = 1;  // leftwards
-        const speedY = 1;  // downwards
+        // Pixels per second (NOT per frame)
+        const speedX = 5;
+        const speedY = 5;
 
         let offsetX = 0;
         let offsetY = 0;
 
-        // Resize canvas to fill viewport
+        // Time accumulator
+        let accumX = 0;
+        let accumY = 0;
+
+        let lastTime = performance.now();
+
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -138,34 +143,44 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Load tile image
         const tile = new Image();
         tile.src = "src/img/cry.png";
 
-        // Draw tiles
-        function draw() {
+        function draw(time) {
+            const deltaTime = (time - lastTime) / 1000; // seconds
+            lastTime = time;
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Calculate starting positions for tiling
-            const startX = -tileWidth + (offsetX % tileWidth);
-            const startY = -tileHeight + (offsetY % tileHeight);
+            const startX = -tileWidth + ((offsetX % tileWidth) + tileWidth) % tileWidth;
+            const startY = -tileHeight + ((offsetY % tileHeight) + tileHeight) % tileHeight;
 
-            // Draw the repeated tiles
             for (let x = startX; x < canvas.width; x += tileWidth) {
                 for (let y = startY; y < canvas.height; y += tileHeight) {
-                    ctx.drawImage(tile, x, y, tileWidth, tileHeight);
+                    ctx.drawImage(tile, Math.floor(x), Math.floor(y), tileWidth, tileHeight);
                 }
             }
 
-            // Update offsets
-            offsetX -= speedX;
-            offsetY += speedY;
+            // Accumulate time-based movement
+            accumX += speedX * deltaTime;
+            accumY += speedY * deltaTime;
+
+            // Convert to whole pixels ONLY
+            const moveX = Math.floor(accumX);
+            const moveY = Math.floor(accumY);
+
+            // Remove used movement
+            accumX -= moveX;
+            accumY -= moveY;
+
+            // Apply integer movement
+            offsetX -= moveX;
+            offsetY += moveY;
 
             requestAnimationFrame(draw);
         }
 
-        // Start drawing after image loads
-        tile.onload = draw;
+        tile.onload = () => requestAnimationFrame(draw);
     </script>
 </body>
 </html>
