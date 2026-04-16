@@ -43,13 +43,27 @@
         object-fit: fill;
         image-rendering: pixelated;
     }
+
+    #tvStatic {
+        position: absolute;
+        top: 25;
+        left: 25;
+        width: 90%;
+        height: 90%;
+        pointer-events: none;
+        object-fit: fill;
+        image-rendering: pixelated;
+    }
 </style>
+
 <h3>this page is placeholder for video projects</h3>
 <!-- VIDEO PLAYER -->
 <div class="d-flex justify-content-center mb-4">
-    <div id="playerContainer" style="width: 960px; max-width: 95vw; aspect-ratio: 4 / 3;">
+    <div id="playerContainer" style="width: 960px; max-width: 95vw; aspect-ratio: 4 / 3; margin: 0 auto;">
+        <!-- Video Content Area -->
         <div id="tvWrapper">
-            <!-- Video Content Area -->
+            <img id="tvStatic" src="src/video/static.gif" alt="Click one of the buttons below to change channels." />
+            <div id="tvContent"></div>
             <img id="tvOverlay" src="src/video/tvWrapper.png" alt="The TV" />
         </div>
     </div>
@@ -86,7 +100,7 @@
                 const showId = this.getAttribute("show-id");
                 if (!showIframes[showId]) return;
 
-                document.getElementById("tvWrapper").innerHTML = showIframes[showId] + '<img id="tvOverlay" src="src/video/tvWrapper.png" alt="The TV" />';
+                document.getElementById("tvContent").innerHTML = showIframes[showId];
 
                 blocks.forEach(b => b.classList.remove("active"));
                 this.classList.add("active");
