@@ -40,6 +40,8 @@
             box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
             padding-top: 3rem; /* enough room for the tab */
             pointer-events: auto;
+            background-color: #000 !important;
+            color: #fff;
         }
 
             /* Hidden state */
@@ -69,11 +71,26 @@
             z-index: 1100;
             transition: left 0.3s ease;
             pointer-events: auto;
+            background-color: #000 !important;
+            color: #fff;
         }
 
             .sidebar.hidden + .sidebar-tab,
             .sidebar-tab.hidden {
-                left: 20px; /* stays visible */
+                left: 0px; /* stays visible */
+            }
+
+            .sidebar .nav-link {
+                color: #fff !important;
+            }
+            
+            .sidebar .nav-link:hover {
+                color: #ccc !important;
+            }
+            
+            .sidebar .nav-link.active {
+                color: #fff !important;
+                font-weight: bold;
             }
     </style>
 </head>
@@ -83,8 +100,8 @@
 
     <div class="d-flex" style="min-height: 100vh;">
         <!-- Vertical Navbar / sidebar -->
-        <div class="sidebar-tab" id="sidebarTab">☰</div>
-        <nav id="sidebar" class="sidebar bg-light p-3">
+        
+        <nav id="sidebar" class="sidebar p-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="landing">Home</a> <!-- make this like a centered icon at the top -->
@@ -100,6 +117,7 @@
                 </li>
             </ul>
         </nav>
+        <div class="sidebar-tab" id="sidebarTab">☰</div>
 
         <!-- Main Content Area -->
         <main class=" p-3">
