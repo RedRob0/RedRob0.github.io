@@ -22,13 +22,6 @@
         width: 100%
     }
 
-    #playerContainer {
-        width: 960px;
-        max-width: 100%;
-        aspect-ratio: 4/3;
-        margin: 0 auto;
-    }
-
     #tvWrapper {
         position: relative;
         width: 100%;
@@ -55,8 +48,8 @@
     }
 
     #tvStatic {
-        top: 25;
-        left: 25;
+        top: 25px;
+        left: 25px;
         width: 90%;
         height: 90%;
         pointer-events: none;
@@ -65,10 +58,9 @@
     }
 </style>
 
-<h3>this page is placeholder for video projects</h3>
-
 <div class="video-section position-relative my-5">
     <div class="container py-5">
+        <h3>this page is placeholder for video projects</h3>
         <!-- VIDEO PLAYER -->
         <div class="d-flex justify-content-center mb-4">
             <div id="playerContainer" style="width: 960px; max-width: 95vw; aspect-ratio: 4 / 3; margin: 0 auto;">
@@ -82,17 +74,16 @@
         </div>
 
         <!-- TV GUIDE GRID --> <!-- placeholder, later I want a clickable image of a TV guide -->
-        <div class="container">
-            <div class="row g-3">
-                <div class="col-4">
-                    <div class="show-block" show-id="HTB1">Hoc Tempore Bruh S1</div>
-                </div>
-                <div class="col-4">
-                    <div class="show-block" show-id="fmbldSummer25">Music Videos</div>
-                </div>
-                <div class="col-4">
-                    <div class="show-block" show-id="news">News</div>
-                </div>
+
+        <div class="row g-3">
+            <div class="col-4">
+                <div class="show-block" show-id="HTB1">Hoc Tempore Bruh S1</div>
+            </div>
+            <div class="col-4">
+                <div class="show-block" show-id="fmbldSummer25">Music Videos</div>
+            </div>
+            <div class="col-4">
+                <div class="show-block" show-id="news">News</div>
             </div>
         </div>
     </div>
