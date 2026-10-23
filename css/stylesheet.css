@@ -22,12 +22,6 @@ main {
     justify-content: center;
 }
 
-#center-justifier {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
 #content {
     display: block;
     height: auto;
