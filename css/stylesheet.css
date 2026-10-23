@@ -26,6 +26,8 @@ main {
     display: block;
     height: auto;
     overflow: visible;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-container {
